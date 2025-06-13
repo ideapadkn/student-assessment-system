@@ -1,24 +1,3 @@
-<template>
-  <div class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Выбери тест</h2>
-    <div v-for="test in tests" :key="test.id" class="p-4 border rounded mb-3">
-      <h3 class="text-xl">{{ test.title }}</h3>
-      <button class="btn mt-2" @click="startTest(test)">Начать</button>
-    </div>
-
-    <div v-if="currentTest" class="mt-6">
-      <h2 class="text-xl mb-2">{{ currentTest.title }}</h2>
-      <div v-for="(q, index) in currentTest.questions" :key="index">
-        <p class="font-semibold">{{ index + 1 }}. {{ q.text }}</p>
-        <div v-for="(opt, i) in q.options" :key="i">
-          <label><input type="radio" :name="'q' + index" :value="i" v-model="answers[index]" /> {{ opt }}</label>
-        </div>
-      </div>
-      <button @click="submitAnswers" class="btn mt-4">📩 Отправить</button>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 import { collection, getDocs, doc, addDoc } from 'firebase/firestore'
@@ -61,8 +40,76 @@ const submitAnswers = async () => {
 }
 </script>
 
+<template>
+  <div class="main-tests">
+    <h2 class="main-tests_title">Выбери тест</h2>
+    <div v-for="test in tests" :key="test.id" class="main-tests_test">
+      <h3 class="text-xl">{{ test.title }}</h3>
+      <button class="btn mt-2" @click="startTest(test)">Начать</button>
+    </div>
+
+    <div v-if="currentTest" class="main-tests_current">
+      <h2 class="main-tests_current-title">{{ currentTest.title }}</h2>
+      <div v-for="(q, index) in currentTest.questions" :key="index">
+        <p class="font-semibold">{{ index + 1 }}. {{ q.text }}</p>
+        <div v-for="(opt, i) in q.options" :key="i">
+          <label><input type="radio" :name="'q' + index" :value="i" v-model="answers[index]" /> {{ opt }}</label>
+        </div>
+      </div>
+      <button @click="submitAnswers" class="btn mt-4">📩 Отправить</button>
+    </div>
+  </div>
+</template>
+
 <style scoped>
-.btn {
-  @apply bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700;
+.main-tests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  .main-tests_title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .main-tests_test {
+    width: 80%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .main-tests_current {
+    width: 80%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    .main-tests_current-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 0.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .btn {
+      width: auto;
+      padding: 0.5rem 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
 }
 </style>

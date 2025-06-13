@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="bg-white p-6 rounded shadow w-96">
-      <h2 class="text-2xl font-bold mb-4">Вход</h2>
-      <form @submit.prevent="login">
+  <div class="main-login">
+    <div class="main-login_page">
+      <h2 class="main-login_title">Вход</h2>
+      <form class="main-login_form" @submit.prevent="login">
         <input v-model="email" type="email" placeholder="Email" class="input" required />
         <input v-model="password" type="password" placeholder="Пароль" class="input" required />
         <button type="submit" class="btn">Войти</button>
       </form>
-      <p class="mt-2 text-sm">Нет аккаунта? <router-link to="/register" class="text-blue-500">Зарегистрироваться</router-link></p>
+      <p class="main-login_pretitle">Нет аккаунта? <router-link to="/register">Зарегистрироваться</router-link></p>
     </div>
   </div>
 </template>
@@ -45,10 +45,42 @@ const login = async () => {
 
 
 <style scoped>
-.input {
-  @apply w-full p-2 border rounded mb-3;
-}
-.btn {
-  @apply w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700;
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .main-login_page {
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    width: 300px;
+  }
+
+  .main-login_title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .main-login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .input {
+      padding: 1rem;
+      border: 1px solid #646cff;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+  }
+
+  .main-login_pretitle {
+    margin-top: 1rem;
+    text-align: center;
+  }
 }
 </style>
