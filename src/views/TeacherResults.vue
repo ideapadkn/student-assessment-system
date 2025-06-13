@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { db } from '../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
+import BackButton from '../components/ui/BackButton.vue'
 
 const results = ref([])
 const tests = ref([])
@@ -33,7 +34,10 @@ onMounted(() => {
 
 <template>
   <div class="main-results">
-    <h2 class="main-results_title">Результаты студентов</h2>
+    <div class="main-results_header">
+      <h2 class="main-results_title">Результаты студентов</h2>
+      <BackButton />
+    </div>
 
     <table class="main-results_table">
       <thead class="bg-gray-200">
@@ -65,6 +69,13 @@ onMounted(() => {
   padding: 2rem;
   max-width: 800px;
   margin: auto;
+
+  .main-results_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
 
   .main-results_title {
     font-size: 2rem;

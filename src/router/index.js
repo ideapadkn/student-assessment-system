@@ -5,9 +5,20 @@ import Dashboard from '../views/Dashboard.vue'
 import CreateTest from '../views/CreateTest.vue'
 import AvailableTests from '../views/AvailableTests.vue'
 import TeacherResults from '../views/TeacherResults.vue'
-// import MyResults from '../views/MyResults.vue'
+import StudentResults from '../views/StudentResults.vue'
+import TeacherStudents from '../views/TeacherStudents.vue'
 
 const routes = [
+{
+    path: '/student-results',
+    name: 'StudentResults',
+    component: StudentResults
+  },
+  {
+    path: '/teacher/students',
+    name: 'TeacherStudents',
+    component: TeacherStudents
+  },
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
   { path: '/register', component: Register },

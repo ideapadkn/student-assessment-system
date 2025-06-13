@@ -43,12 +43,12 @@ const roleLabel = computed(() => {
     <div v-if="role === 'teacher'" class="main-dash_teacher">
       <button class="btn" @click="goTo('create-test')">📘 Создать тест</button>
       <button class="btn" @click="goTo('results')">📊 Смотреть результаты</button>
-      <button class="btn" @click="goTo('students')">👨‍🏫 Управление студентами</button>
+      <button class="btn" @click="goTo('teacher/students')">👨‍🏫 Управление студентами</button>
     </div>
 
     <div v-else-if="role === 'student'" class="main-dash_student">
       <button class="btn" @click="goTo('available-tests')">📝 Пройти тест</button>
-      <button class="btn" @click="goTo('my-results')">📈 Мои оценки</button>
+      <button class="btn" @click="goTo('student-results')">📈 Мои оценки</button>
     </div>
 
     <div v-else>

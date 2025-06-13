@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { collection, getDocs, doc, addDoc } from 'firebase/firestore'
 import { db, auth } from '../firebase/config'
+import BackButton from '../components/ui/BackButton.vue'
 
 const tests = ref([])
 const currentTest = ref(null)
@@ -42,7 +43,10 @@ const submitAnswers = async () => {
 
 <template>
   <div class="main-tests">
-    <h2 class="main-tests_title">Выбери тест</h2>
+    <div class="main-tests_header">
+      <h2 class="main-tests_title">Выбери тест</h2>
+      <BackButton />
+    </div>
     <div v-for="test in tests" :key="test.id" class="main-tests_test">
       <h3 class="text-xl">{{ test.title }}</h3>
       <button class="btn mt-2" @click="startTest(test)">Начать</button>
@@ -67,12 +71,21 @@ const submitAnswers = async () => {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+
+  .main-tests_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
   .main-tests_title {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
   .main-tests_test {
-    width: 80%;
+    width: 55%;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;

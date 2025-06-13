@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { db } from '../firebase/config'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import BackButton from '../components/ui/BackButton.vue'
 
 const title = ref('')
 const questions = ref([
@@ -26,7 +27,10 @@ const saveTest = async () => {
 
 <template>
   <div class="main-test">
-    <h2 class="main-test_title">Создание теста</h2>
+    <div class="main-test_header">
+      <h2 class="main-test_title">Создание теста</h2>
+      <BackButton />
+    </div>
     
     <div v-for="(question, index) in questions" :key="index" class="main-test_question">
       <input v-model="title" type="text" placeholder="Название теста" class="input" />
@@ -50,6 +54,14 @@ const saveTest = async () => {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+
+  .main-test_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
 
   .main-test_title {
     font-size: 2rem;
