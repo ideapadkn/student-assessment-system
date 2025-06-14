@@ -54,6 +54,8 @@ const roleLabel = computed(() => {
     <div v-else>
       <p class="text-red-600 font-semibold">Ошибка: роль не определена</p>
     </div>
+
+    <router-link to="/chat" class="btn-chat-ai">💬 Чат с ИИ</router-link>
   </div>
 </template>
 
