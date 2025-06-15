@@ -1,17 +1,3 @@
-<template>
-  <div class="main-login">
-    <div class="main-login_page">
-      <h2 class="main-login_title">Вход</h2>
-      <form class="main-login_form" @submit.prevent="login">
-        <input v-model="email" type="email" placeholder="Email" class="input" required />
-        <input v-model="password" type="password" placeholder="Пароль" class="input" required />
-        <button type="submit" class="btn">Войти</button>
-      </form>
-      <p class="main-login_pretitle">Нет аккаунта? <router-link to="/register">Зарегистрироваться</router-link></p>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -43,44 +29,84 @@ const login = async () => {
 };
 </script>
 
+<template>
+  <div class="main-login">
+    <div class="main-login_page">
+      <h2 class="main-login_title">Вход</h2>
+      <form class="main-login_form" @submit.prevent="login">
+        <input v-model="email" type="email" placeholder="Email" class="input" required />
+        <input v-model="password" type="password" placeholder="Пароль" class="input" required />
+        <button type="submit" class="btn">Войти</button>
+      </form>
+      <p class="main-login_pretitle">Нет аккаунта? <router-link class="link" to="/register">Зарегистрироваться</router-link></p>
+    </div>
+  </div>
+</template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../styles/_variable.scss';
+
 .main-login {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 95vh;
+  color: $primary;
 
-  .main-login_page {
+  &_page {
+    width: 100%;
+    max-width: 300px;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    width: 300px;
-  }
-
-  .main-login_title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    background-color: $background;
+    border-radius: $radius;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-  }
 
-  .main-login_form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    .input {
-      padding: 1rem;
-      border: 1px solid #646cff;
-      border-radius: 4px;
-      outline: none;
-      transition: border-color 0.3s;
+    .main-login_title {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
-  }
 
-  .main-login_pretitle {
-    margin-top: 1rem;
-    text-align: center;
+    .main-login_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .input {
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .btn {
+        background-color: $primary;
+        padding: 0.75rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        width: 110%;
+
+        &:hover {
+          background-color: darken($primary, 10%);
+        }
+      }
+    }
+
+    .main-login_pretitle {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: black;
+
+      .link {
+        color: $primary;
+        text-decoration: underline;
+
+        &:hover {
+          color: darken($primary, 10%);
+        }
+      }
+    }
   }
 }
 </style>

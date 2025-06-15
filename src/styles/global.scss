@@ -6,7 +6,6 @@ body, html {
   background: $secondary;
   margin: 0;
   padding: 0;
-  color: $text-main;
   min-height: 100vh;
 }
 
@@ -24,7 +23,6 @@ input, select, textarea {
   border-radius: $radius;
   background: transparent;
   border: 1px solid #ececec;
-  color: $text-main;
   padding: 0.8em 1em;
   font-size: 1rem;
   outline: none;

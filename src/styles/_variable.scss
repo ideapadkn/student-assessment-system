@@ -1,11 +1,22 @@
 $primary: #4f8cff;
-$secondary: #242424;
+$secondary: var(--hdr-gradient);
 $background: #fff;
-$text-main: #fff;
 $text-muted: #959595;
 $danger: #ff595e;
 $success: #3be081;
 $radius: 14px;
-$transition: .2s;
+$transition: .3s;
 $font-main: 'Inter', Arial, sans-serif;
 $shadow: 0 4px 24px rgba(0,0,0,0.07);
+
+:root {
+  --hdr-gradient: conic-gradient(
+    from 0deg at 112% 1% in oklch,
+    oklch(75% 0.5 156) 35% 35%, oklch(70% 0.5 261) 100% 41%
+  );
+  --sdr-gradient: conic-gradient(
+    from 0deg at 112% 1%,
+    #00f600 35% 35%, #0003ff 100% 41%
+  );
+
+}

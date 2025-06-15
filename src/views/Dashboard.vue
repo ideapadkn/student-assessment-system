@@ -61,81 +61,91 @@ const roleLabel = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 @import "../styles/_variable.scss";
 
 .main-dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
 
-  .main-dash_welcome {
+  &_welcome {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
 
-    .main-dash_welcome-title {
-      font-size: 2.2rem;
-      font-weight: bold;
+    &-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      margin-top: 8px;
+
+      @media (max-width: 400px) {
+        font-size: 16px;
+      }
     }
 
     .logout-btn {
-      background-color: #f87171;
+      background-color: $danger;
       color: white;
-      padding: 0.5rem 1rem;
+      padding: 5px 10px;
+      border-radius: $radius;
       border: none;
-      border-radius: 0.375rem;
       cursor: pointer;
-      transition: background-color 0.3s;
+      max-height: 50px;
 
       &:hover {
-        background-color: #ef4444;
+        background-color: darken($danger, 10%);
+      }
+
+      @media (max-width: 400px) {
+        max-height: 25px;
+        margin-top: 13px;
       }
     }
   }
 
-  .main-dash_teacher {
+  .main-dash_teacher, .main-dash_student {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+    flex-wrap: wrap;
+    gap: 1rem;  
 
-  .main-dash_student {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    .btn {
+      background-color: $primary;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: $radius;
+      border: none;
+      cursor: pointer;
+      transition: $transition ease;
+
+      &:hover {
+        background-color: darken($primary, 10%);
+      }
+    }
   }
 
   .btn-ai {
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    height: 50vh;
+    position: absolute;
+    right: 13%;
+    bottom: 9%;
+
     .btn-chat-ai {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55em;
-      background: linear-gradient(90deg, #4f8cff, #7c5fff 85%);
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.04rem;
-      border: none;
-      border-radius: 999px;
-      padding: 0.75em 1.6em;
-      box-shadow: 0 2px 12px rgba(79, 140, 255, 0.13);
-      cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+      background-color: $primary;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: $radius;
       text-decoration: none;
+      transition: $transition ease;
 
       &:hover {
-        background: linear-gradient(90deg, #4573cf, #6746ff 85%);
-        box-shadow: 0 4px 18px rgba(79, 140, 255, 0.18);
-        transform: translateY(-2px) scale(1.03);
-        text-decoration: none;
-      }
-
-      &::before {
-        font-size: 1.25em;
+        background-color: darken($primary, 10%);
       }
     }
   }
