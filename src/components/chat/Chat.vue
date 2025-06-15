@@ -116,7 +116,7 @@ $gray: #9fa1a7;
   flex-direction: column;
   padding: 24px 20px 18px 20px;
   min-height: 480px;
-  height: 80vh;
+  height: 75vh;
   border: 1px solid $ai-border;
 }
 

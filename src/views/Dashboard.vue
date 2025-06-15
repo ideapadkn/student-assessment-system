@@ -36,7 +36,7 @@ const roleLabel = computed(() => {
 <template>
   <div class="main-dash">
     <div class="main-dash_welcome">
-      <h1 class="main-dash_welcome-title">👋 Добро пожаловать, {{ roleLabel }}</h1>
+      <h1 class="main-dash_welcome-title">Добро пожаловать, {{ roleLabel }}</h1>
       <button class="logout-btn" @click="logout">Выйти</button>
     </div>
 
@@ -55,23 +55,30 @@ const roleLabel = computed(() => {
       <p class="text-red-600 font-semibold">Ошибка: роль не определена</p>
     </div>
 
-    <router-link to="/chat" class="btn-chat-ai">💬 Чат с ИИ</router-link>
+    <div class="btn-ai">
+      <router-link to="/chat" class="btn-chat-ai">💬 Чат с ИИ</router-link>
+    </div>
   </div>
 </template>
 
 <style scoped>
+@import "../styles/_variable.scss";
+
 .main-dash {
   padding: 2rem;
   max-width: 800px;
   margin: auto;
+
   .main-dash_welcome {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .main-dash_welcome-title {
       font-size: 2.2rem;
       font-weight: bold;
     }
+
     .logout-btn {
       background-color: #f87171;
       color: white;
@@ -80,20 +87,57 @@ const roleLabel = computed(() => {
       border-radius: 0.375rem;
       cursor: pointer;
       transition: background-color 0.3s;
+
       &:hover {
         background-color: #ef4444;
       }
     }
   }
+
   .main-dash_teacher {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
+
   .main-dash_student {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .btn-ai {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 50vh;
+    .btn-chat-ai {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55em;
+      background: linear-gradient(90deg, #4f8cff, #7c5fff 85%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.04rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75em 1.6em;
+      box-shadow: 0 2px 12px rgba(79, 140, 255, 0.13);
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+      text-decoration: none;
+
+      &:hover {
+        background: linear-gradient(90deg, #4573cf, #6746ff 85%);
+        box-shadow: 0 4px 18px rgba(79, 140, 255, 0.18);
+        transform: translateY(-2px) scale(1.03);
+        text-decoration: none;
+      }
+
+      &::before {
+        font-size: 1.25em;
+      }
+    }
   }
 }
 </style>

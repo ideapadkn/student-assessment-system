@@ -1,0 +1,55 @@
+@import './variable';
+@import './mixins';
+
+body, html {
+  font-family: $font-main;
+  background: $secondary;
+  margin: 0;
+  padding: 0;
+  color: $text-main;
+  min-height: 100vh;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition;
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+input, select, textarea {
+  font-family: $font-main;
+  border-radius: $radius;
+  background: transparent;
+  border: 1px solid #ececec;
+  color: $text-main;
+  padding: 0.8em 1em;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color $transition;
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+button {
+  border: none;
+  border-radius: $radius;
+  background: $primary;
+  color: #fff;
+  padding: 0.8em 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background $transition;
+  &:hover {
+    background: darken($primary, 10%);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em;
+}
