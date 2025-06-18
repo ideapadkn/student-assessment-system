@@ -34,45 +34,23 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../styles/_variable';
+
 .main-results {
-  padding: 1rem;
-  .main-results_header {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
+
+  &_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .main-results_title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
-  }
-  strong {
-    font-weight: bold;
-  }
-  p {
-    font-size: 1.2rem;
-    color: #666;
-  }
-  .btn {
-    background-color: #4a90e2;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: #357abd;
-    }
+    margin-bottom: 20px;
   }
 }
-
 </style>

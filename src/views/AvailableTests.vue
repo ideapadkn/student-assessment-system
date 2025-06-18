@@ -65,63 +65,34 @@ const submitAnswers = async () => {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../styles/_variable.scss";
+
 .main-tests {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2rem;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
 
-  .main-tests_header {
-    width: 100%;
+  &_header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
   }
 
-  .main-tests_title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .main-tests_test {
-    width: 55%;
-    padding: 1rem;
+  &_test {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    text-align: center;
-    h3 {
-      margin-bottom: 0.5rem;
-    }
-  }
-  .main-tests_current {
-    width: 80%;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    .main-tests_current-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      margin-bottom: 0.5rem;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+    border-radius: 5px;
     .btn {
-      width: auto;
-      padding: 0.5rem 1rem;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      &:hover {
-        background-color: #45a049;
-      }
+      display: inline-block;
     }
   }
 }

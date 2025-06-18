@@ -64,38 +64,38 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-.main-results {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+<style lang="scss" scoped>
+@import '../styles/_variable';
 
-  .main-results_header {
+.main-results {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
+
+  &_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
   }
 
-  .main-results_title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .main-results_table {
+  &_table {
     width: 100%;
     border-collapse: collapse;
 
-    th,
-    td {
+    th, td {
       text-align: left;
-      padding: 0.5rem;
-      border: 1px solid #ddd;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 5px;
     }
 
     th {
-      background-color: hsl(0, 0%, 18%);
+      background-color: #f2f2f2;
     }
   }
 }

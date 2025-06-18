@@ -48,76 +48,36 @@ const saveTest = async () => {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../styles/_variable';
+
 .main-test {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2rem;
-
-  .main-test_header {
-    width: 100%;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
+  &_header {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-
-  .main-test_title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .input {
-    width: 60%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .main-test_question {
-    margin-bottom: 1.5rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    .input {
-      width: 60%;
-      margin-bottom: 0.5rem;
-    }
-
-    .main-test_option {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.5rem;
-
-      .input {
-        width: 100%;
-        margin-right: 0.5rem;
-      }
-    }
-  }
-
-  .main-test_actions {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  &_question {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    .input {
+      margin-bottom: 10px;
+    }
+  }
+  &_actions {
+    display: flex;
+    flex-direction: column;
     .btn {
-      padding: 0.5rem 1rem;
-      background-color: #646cff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #2563eb;
-      }
+      margin-top: 10px;
     }
   }
 }

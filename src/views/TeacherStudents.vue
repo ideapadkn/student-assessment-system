@@ -33,7 +33,7 @@ onMounted(async () => {
           <td class="border px-4 py-2">{{ student.name || '—' }}</td>
           <td class="border px-4 py-2">{{ student.email }}</td>
           <td class="border px-4 py-2">
-            <button class="bg-red-500 text-white px-2 py-1 rounded">Удалить</button>
+            <button class="btn">Удалить</button>
           </td>
         </tr>
       </tbody>
@@ -41,53 +41,46 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped>
-.main-students {
-  padding: 1rem;
+<style lang="scss" scoped>
+@import '../styles/_variable';
 
-  .main-students_header {
+.main-students {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  color: $primary;
+  background-color: $background;
+  border-radius: $radius;
+  height: 85vh;
+
+  &_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .main-students_title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-  }
 
-  th,
-  td {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    text-align: left;
-  }
+    th,
+    td {
+      text-align: left;
+      padding: 0.5rem;
 
-  th {
-    background-color: #242424;
-  }
+      .btn {
+        background-color: #e3342f;
+        padding: 5px 10px;
 
-  td {
-    background-color: #242424;
-  }
+        &:hover {
+          background-color: #cc1f1a;
+        }
+      }
+    }
 
-  button {
-    background-color: #e3342f;
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #cc1f1a;
+    th {
+      font-weight: bold;
     }
   }
 }

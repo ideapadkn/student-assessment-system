@@ -73,7 +73,7 @@ async function sendMessage() {
         <input v-model="userInput" class="chat-input" type="text" placeholder="Введите вопрос..." :disabled="loading"
           @keydown.enter="sendMessage" />
         <button type="submit" class="chat-btn" :disabled="loading || !userInput.trim()">{{ loading ? '...' : 'Отправить'
-          }}</button>
+        }}</button>
       </form>
     </div>
   </div>
@@ -92,7 +92,7 @@ async function sendMessage() {
   border-radius: $radius;
   height: 85vh;
 
-  .chat-header {
+  &-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -100,9 +100,31 @@ async function sendMessage() {
     margin-bottom: 2rem;
   }
 
-  .chat-wrapper {
-    
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .chat-body {
+      overflow-y: auto;
+      max-height: 70vh;
+      padding: 1rem;
+      border-radius: $radius;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-form {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: space-between;
+
+      .chat-input {
+        flex: 1;
+      }
+    }
   }
 }
-
 </style>
