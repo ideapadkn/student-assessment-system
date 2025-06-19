@@ -57,7 +57,7 @@ async function sendMessage() {
 }
 </script>
 
-<template>
+<!-- <template>
   <div class="chat">
     <div class="chat-header">
       <h1 class="text-2xl font-bold mb-4">Чат с ИИ</h1>
@@ -77,10 +77,34 @@ async function sendMessage() {
       </form>
     </div>
   </div>
+</template> -->
+
+<template>
+  <div class="chat">
+    <div class="chat-header">
+      <h1 class="text-2xl font-bold mb-4">Чат с ИИ</h1>
+      <BackButton />
+    </div>
+    <div class="chat-window">
+      <div class="chat-body" ref="chatContainer">
+        <div v-for="msg in messages" :key="msg.id" :class="['chat-msg', msg.role]">
+          <div class="chat-bubble" v-html="renderMarkdown(msg.text)"></div>
+        </div>
+      </div>
+      <form @submit.prevent="sendMessage" class="chat-form">
+        <input v-model="userInput" class="chat-input" type="text" placeholder="Введите вопрос..." :disabled="loading"
+          @keydown.enter="sendMessage" />
+        <button type="submit" class="chat-btn" :disabled="loading || !userInput.trim()">
+          {{ loading ? '...' : 'Отправить' }}
+        </button>
+      </form>
+    </div>
+  </div>
 </template>
 
+
 <style lang="scss" scoped>
-@import '../../styles/_variable.scss';
+@import '../../styles/variable';
 
 .chat {
   display: flex;
@@ -90,41 +114,123 @@ async function sendMessage() {
   color: $primary;
   background-color: $background;
   border-radius: $radius;
-  height: 85vh;
+  height: 95vh;
+  box-sizing: border-box;
 
-  &-header {
+  .chat-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
     margin-bottom: 2rem;
   }
 
-  &-wrapper {
+  // Белое "окно" чата
+  .chat-window {
+    background: #fff;
+    border-radius: $radius;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 900px;
+    height: 65vh;
+    position: relative;
+    overflow: hidden; // чтобы не было левых скроллов
+  }
 
-    .chat-body {
-      overflow-y: auto;
-      max-height: 70vh;
-      padding: 1rem;
+  .chat-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden; // горизонтальный скролл уберёт!
+    padding: 1.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%; // важно!
+    min-height: 0;
+  }
+
+  .chat-form {
+    display: flex;
+    align-items: center; // выравнивает по центру!
+    gap: 10px;
+    padding: 1rem;
+    background: #fff;
+    border-top: 1px solid #f1f1f1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    .chat-input {
+      flex: 1 1 auto;
       border-radius: $radius;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+      border: 1px solid #e1e1e1;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
 
-    .chat-form {
-      display: flex;
-      align-items: center;
-      gap: 0 10px;
-      margin-top: 1rem;
-      width: 100%;
-      justify-content: space-between;
-
-      .chat-input {
-        flex: 1;
+      &:focus {
+        border-color: $primary;
       }
     }
+
+    .chat-btn {
+      background: $primary;
+      color: #fff;
+      border: none;
+      padding: 0 1.6rem;
+      border-radius: $radius;
+      font-weight: 600;
+      font-size: 1rem;
+      height: 44px; // совпадает с input!
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: darken($primary, 10%);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: default;
+      }
+    }
+  }
+
+
+  .chat-msg {
+    display: flex;
+    flex-direction: column;
+
+    &.user .chat-bubble {
+      align-self: flex-end;
+      background: #e3f0ff;
+      color: $primary;
+    }
+
+    &.ai .chat-bubble {
+      align-self: flex-start;
+      background: #f3f3f7;
+      color: #333;
+    }
+  }
+
+  .chat-bubble {
+    max-width: 70%;
+    padding: 0.7rem 1rem;
+    border-radius: 1.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0.1rem;
+    word-break: break-word;
+    font-size: 1.08rem;
+    line-height: 1.5;
   }
 }
 </style>

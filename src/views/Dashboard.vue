@@ -78,13 +78,12 @@ const roleLabel = computed(() => {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
     margin-bottom: 2rem;
 
     &-title {
       font-size: 2rem;
-      margin-bottom: 1rem;
-      margin-top: 8px;
 
       @media (max-width: 400px) {
         font-size: 16px;
@@ -92,29 +91,26 @@ const roleLabel = computed(() => {
     }
 
     .logout-btn {
-      background-color: $danger;
+      background-color: #e3342f;
       color: white;
-      padding: 5px 10px;
-      border-radius: $radius;
+      padding: 0.25rem 0.5rem;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
-      max-height: 50px;
+      transition: background-color 0.3s;
+      height: 34px;
 
       &:hover {
-        background-color: darken($danger, 10%);
-      }
-
-      @media (max-width: 400px) {
-        max-height: 25px;
-        margin-top: 13px;
+        background-color: #cc1f1a;
       }
     }
   }
 
-  .main-dash_teacher, .main-dash_student {
+  .main-dash_teacher,
+  .main-dash_student {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;  
+    gap: 1rem;
 
     .btn {
       background-color: $primary;
